@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MusicController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,4 +12,8 @@ Route::prefix('v1')->group(function() {
     });
 
     Route::post('user', [UserController::class, 'store']);
+
+    Route::middleware('auth:api')->group(function() {
+        Route::apiResource('music', MusicController::class);
+    });
 });
