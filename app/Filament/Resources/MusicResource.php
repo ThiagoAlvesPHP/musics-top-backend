@@ -11,10 +11,13 @@ use Filament\Forms\Components\ViewField;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class MusicResource extends Resource
 {
@@ -82,8 +85,15 @@ class MusicResource extends Resource
                     ->options(StatusEnum::options()),
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                    ->options(StatusEnum::options())
+                    ->query(fn (Builder $query, $state): Builder => $state['value'] ? $query->where('status', $state['value']) : $query)
             ])
+            ->filtersTriggerAction(
+                fn (Action $action) => $action
+                    ->button()
+                    ->label('Filtros'),
+            )
             ->actions([
                 ActionGroup::make([
                     Tables\Actions\EditAction::make()
