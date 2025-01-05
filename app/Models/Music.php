@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\Music\StatusEnum;
 use Illuminate\Database\Eloquent\Model;
 
 class Music extends Model
@@ -12,7 +13,11 @@ class Music extends Model
         'count_views',
         'youtube_id',
         'thumb',
-        'is_active',
+        'status',
+    ];
+
+    protected $casts = [
+        'status' => StatusEnum::class,
     ];
 
     public function user()

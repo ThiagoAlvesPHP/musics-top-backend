@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('count_views');
             $table->string('youtube_id');
             $table->string('thumb');
-            $table->boolean('is_active')->default(false);
+            $table->enum('status', ['approved', 'pending', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
