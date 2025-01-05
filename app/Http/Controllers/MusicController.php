@@ -15,9 +15,33 @@ class MusicController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $musics = Music::query()->get();
+        $musics = Music::query();
+
+        if ($request->has('search')) {
+            $musics->where('title', 'LIKE', '%' . $request->get('search') . '%');
+        }
+
+        if ($request->has('filter')) {
+            $filters = explode(';', $request->get('filter'));
+
+            foreach ($filters as $filter) {
+                $filterData = explode(':', $filter);
+                $musics->where($filterData[0], $filterData[1], $filterData[2]);
+            }
+        }
+
+        if ($request->has('order')) {
+            $order = explode(',', $request->get('order'));
+            $musics->orderBy($order[0], !empty($order[1]) ? $order[1] : 'asc');
+        }
+
+        if ($request->has('properties')) {
+            $musics->selectRaw('id,' . $request->get('properties'));
+        }
+
+        $musics = $musics->paginate(5);
 
         return $musics;
     }
