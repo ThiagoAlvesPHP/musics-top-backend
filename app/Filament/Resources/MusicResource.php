@@ -4,10 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Enum\Music\StatusEnum;
 use App\Filament\Resources\MusicResource\Pages;
-use App\Filament\Resources\MusicResource\RelationManagers;
 use App\Models\Music;
-use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\ViewField;
@@ -18,8 +15,6 @@ use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class MusicResource extends Resource
 {
@@ -53,7 +48,8 @@ class MusicResource extends Resource
                     ->disabled()
                     ->hidden(fn ($operation) => $operation === 'create'),
                 Select::make('status')
-                    ->options(StatusEnum::options()),
+                    ->options(StatusEnum::options())
+                    ->hidden(fn ($operation) => $operation === 'create'),
                 TextInput::make('url')
                     ->label('URL:')
                     ->placeholder('URL do Youtube...')
