@@ -13,7 +13,10 @@ Route::prefix('v1')->group(function() {
 
     Route::post('user', [UserController::class, 'store']);
 
+    Route::get('music', [MusicController::class, 'index']);
+    Route::get('music/{id}', [MusicController::class, 'show']);
+
     Route::middleware('auth:api')->group(function() {
-        Route::apiResource('music', MusicController::class);
+        Route::post('music', [MusicController::class, 'store']);
     });
 });
