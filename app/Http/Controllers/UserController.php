@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\StorePostRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Traits\AuthTrait;
 
 class UserController extends Controller
 {
@@ -15,6 +17,8 @@ class UserController extends Controller
         $user = $request->only('name', 'email', 'password');
         $user = User::create($user);
 
-        return $user;
+        $token = Auth::attempt($request->only('email', 'password'));
+
+        return AuthTrait::respondWithToken($token);
     }
 }
