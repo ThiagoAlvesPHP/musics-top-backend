@@ -55,7 +55,7 @@ trait MusicTrait
         if ($response === false) {
             throw new Exception("Erro ao acessar o YouTube: " . curl_error($ch));
         }
-    
+
         curl_close($ch);
 
         // Extract the title
