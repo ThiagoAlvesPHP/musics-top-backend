@@ -80,29 +80,29 @@ it('can edit save musics', function () {
 });
 
 //validando inputs
-//it('can validate input musics', function () {
-//    $find = Music::factory()->create();
-//
-//    livewire(MusicResource\Pages\EditMusic::class, [
-//        'record' => $find->getRouteKey(),
-//    ])
-//        ->fillForm([
-//            "user_id" => User::factory()->create()->id,
-//            "title" => null,
-//            "count_views" => rand(1000, 9999999),
-//            "youtube_id" => rand(1000, 9999999),
-//            "thumb" => "Mozell Krajcik",
-//            "status" => StatusEnum::PENDING->value
-//        ])
-//        ->call('save')
-//        ->assertHasFormErrors([
-//            'user_id' => 'required',
-//            'title' => 'required',
-//            'count_views' => 'required',
-//            'thumb' => 'required',
-//            'status' => 'required',
-//        ]);
-//});
+it('can validate input musics', function () {
+    $find = Music::factory()->create();
+
+    livewire(MusicResource\Pages\EditMusic::class, [
+        'record' => $find->getRouteKey(),
+    ])
+        ->fillForm([
+            "user_id" => User::factory()->create()->id,
+            "title" => null,
+            "count_views" => rand(1000, 9999999),
+            "youtube_id" => rand(1000, 9999999),
+            "thumb" => "Mozell Krajcik",
+            "status" => StatusEnum::PENDING->value
+        ])
+        ->call('save')
+        ->assertHasFormErrors([
+            'user_id' => 'required',
+            'title' => 'required',
+            'count_views' => 'required',
+            'thumb' => 'required',
+            'status' => 'required',
+        ]);
+})->todo();
 
 //deletando
 it('can delete musics', function () {
