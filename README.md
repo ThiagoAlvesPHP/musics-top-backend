@@ -7,10 +7,10 @@
 
 Tecnologias usadas no projeto:
 
-  * Laravel
-  * PHP
-  * Composer
-  * Docker & Laravel Sail
+* Laravel
+* PHP
+* Composer
+* Docker & Laravel Sail
 
 ## Serviços Usados
 
@@ -18,27 +18,31 @@ Consulta se a URL do Youtube era valida e captura dos dados do vídeo do Youtube
 
 ## Para Iniciar
 
-  * Ambiente:
+* Ambiente:
     - É necessário que o docker esteja instalado para uma instalação rápida
     - É necessário ter o composer
-  
-  * Instalação:
-    - Instale as dependencias do projeto na raiz do mesmo com o seguinte comando: `composer install`
-    - Copie e cole o arquivo `.env.example` e o renomeie para `.env`
-    - Descomente as chaves com as iniciai `DB_` do arquivo `.env` e troque o valor da chave `DB_CONNECTION` para `mysql`
-    - Execute o comando do sail para gerar a build das imagens e iniciar os containers e o projeto: `./vendor/bin/sail up -d`
-    - Execute o comando `./vendor/bin/sail artisan key:generate` para gerar uma chave para o seu projeto Laravel
-    - Execute o comando `./vendor/bin/sail artisan jwt:secret` para gerar uma chave para assinar os seus tokens
-    - Execute o comando `./vendor/bin/sail artisan migrate` para criar as tabelas do banco de dados
-    - Execute o comando `./vendor/bin/sail artisan db:seed` para executar o seed do popular a tabela de usuário com uma conta administrativa
 
-        *Credenciais da Conta*
+* Instalação:
+    - Instale as dependencias do projeto na raiz do mesmo com o seguinte comando: composer install
+    - Copie e cole o arquivo .env.example e o renomeie para .env
+    - Descomente as chaves com as iniciai DB_ do arquivo .env e troque o valor da chave DB_CONNECTION para mysql
+    - Execute o comando do sail para gerar a build das imagens e iniciar os containers e o projeto: ./vendor/bin/sail up -d
+    - Execute o comando ./vendor/bin/sail artisan key:generate para gerar uma chave para o seu projeto Laravel
+    - Execute o comando ./vendor/bin/sail artisan jwt:secret para gerar uma chave para assinar os seus tokens
+    - Entre no arquivo .env e na chave DB_HOST mude o valor para mysql para estabelecer conexão com o container do docker
+    - Execute o comando ./vendor/bin/sail artisan migrate para criar as tabelas do banco de dados
+    - Execute o comando ./vendor/bin/sail artisan db:seed para executar o seed do popular a tabela de usuário com uma conta administrativa
 
-        Email: `admin@musicstop.com.br` | Senha: `admin123`
+      Credenciais da Conta
 
-  * Uso:
+      Email: admin@musicstop.com.br | Senha: admin123
+
+* Uso:
     - Para acessar o projeto basta [Clicar Aqui](http://0.0.0.0/)
-    - Para acessar o dashboard a rota é em `/admin`
+    - Para acessar o dashboard a rota é em /admin
+
+* Observações
+    - Certifique-se de que as portas configuradas no arquivo docker-compose.yml não estejam em uso antes de rodar o Sail. Caso contrário, podem ocorrer erros de conflito de portas.
 
 ### Rotas
 
@@ -47,4 +51,3 @@ Consulta se a URL do Youtube era valida e captura dos dados do vídeo do Youtube
 ![Rota de Registro da Música](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/readme/register_music.png)
 ![Rota de Listar as Músicas](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/readme/musics.png)
 ![Rota de Ver a Música](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/readme/music.png)
-
