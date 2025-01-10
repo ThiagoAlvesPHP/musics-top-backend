@@ -42,9 +42,9 @@ Consulta se a URL do Youtube era valida e captura dos dados do vídeo do Youtube
 
 ### Rotas
 
-![Rota de Login](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/src/readme/login.png)
-![Rota de Registro de Usuário](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/src/readme/register_user.png)
-![Rota de Registro da Música](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/src/readme/register_music.png)
-![Rota de Listar as Músicas](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/src/readme/musics.png)
-![Rota de Ver a Música](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/src/readme/music.png)
+![Rota de Login](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/readme/login.png)
+![Rota de Registro de Usuário](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/readme/register_user.png)
+![Rota de Registro da Música](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/readme/register_music.png)
+![Rota de Listar as Músicas](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/readme/musics.png)
+![Rota de Ver a Música](https://github.com/ThiagoAlvesPHP/musics-top-backend/blob/master/readme/music.png)
 
