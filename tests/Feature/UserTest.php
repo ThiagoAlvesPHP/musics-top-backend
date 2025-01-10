@@ -54,7 +54,7 @@ it('can edit save users', function () {
     $newData = [
         'name' => fake()->name(),
         'email' => fake()->email(),
-        'password' => fake()->password(),
+        'password' => fake()->password(8, 12), // Gera uma senha válida
     ];
 
     livewire(UserResource\Pages\EditUser::class, [
@@ -64,11 +64,17 @@ it('can edit save users', function () {
         ->call('save')
         ->assertHasNoFormErrors();
 
-    expect($find->refresh())
+    // Verifique os dados atualizados no banco de dados
+    $updatedUser = $find->refresh();
+
+    expect($updatedUser)
         ->name->toBe($newData['name'])
-        ->email->toBe($newData['email'])
-        ->password->not->toBe($newData['password']);
+        ->email->toBe($newData['email']);
+
+    // Verifique se a senha foi corretamente criptografada
+    expect(\Illuminate\Support\Facades\Hash::check($newData['password'], $updatedUser->password))->toBeTrue();
 });
+
 
 //validando inputs
 it('can validate input users', function () {
