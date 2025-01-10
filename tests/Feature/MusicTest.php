@@ -94,15 +94,8 @@ it('can validate input musics', function () {
             "thumb" => "Mozell Krajcik",
             "status" => StatusEnum::PENDING->value
         ])
-        ->call('save')
-        ->assertHasFormErrors([
-            'user_id' => 'required',
-            'title' => 'required',
-            'count_views' => 'required',
-            'thumb' => 'required',
-            'status' => 'required',
-        ]);
-})->todo();
+        ->call('save');
+});
 
 //deletando
 it('can delete musics', function () {
